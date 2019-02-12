@@ -3,6 +3,7 @@
 ## I. Préparation du lab
 
 
+## 2. Préparation Routeurs Cisco
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzNTAxMTUwMiw4NzQ0NDc0OF19
+eyJoaXN0b3J5IjpbLTIwOTc2MDc3NjMsODc0NDQ3NDhdfQ==
 -->
