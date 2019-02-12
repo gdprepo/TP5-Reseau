@@ -9,6 +9,13 @@
 
 
 # II. Lancement et configuration du lab
+
+### Checklist IP Routeurs
+
+
+
+
+### Checklist routes
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0OTU2MzkxNSw4NzQ0NDc0OF19
+eyJoaXN0b3J5IjpbLTE0MjA5OTA3MTcsODc0NDQ3NDhdfQ==
 -->
