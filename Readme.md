@@ -14,8 +14,15 @@
 
 
 
-
 ### Checklist routes
+
+
+
+# III. DHCP
+
+## 1. Mise en place du serveur DHCP
+
+## 2. Explorer un peu DHCP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjA5OTA3MTcsODc0NDQ3NDhdfQ==
+eyJoaXN0b3J5IjpbLTYzNTcwNDgyLDg3NDQ0NzQ4XX0=
 -->
