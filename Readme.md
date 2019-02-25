@@ -1,89 +1,91 @@
----
+# TP5 - Premier pas dans le monde Cisco
 
+# I. Préparation du lab
 
----
-
-<hr>
-<hr>
-<h1 id="tp5---premier-pas-dans-le-monde-cisco">TP5 - Premier pas dans le monde Cisco</h1>
-<h1 id="i.-préparation-du-lab">I. Préparation du lab</h1>
-<h2 id="préparation-vms">Préparation VMs</h2>
-<pre><code>[root@vm1 ~]# ip route
+## Préparation VMs
+```
+[root@vm1 ~]# ip route
 10.5.1.0/24 dev enp0s3 proto kernel scope link src 10.5.1.0 metric 100
-</code></pre>
-<pre><code>[root@vm2 ~]# ip route
+```
+```
+[root@vm2 ~]# ip route
 10.5.2.0/24 dev enp0s3 proto kernel scope link src 10.5.2.10 metric 100
-</code></pre>
-<pre><code>[root@vm3 ~]# ip route
+```
+```
+[root@vm3 ~]# ip route
 10.5.2.0/24 dev enp0s3 proto kernel scope link src 10.5.2.11 metric 100
-</code></pre><p></p>
-<h1 id="ii.-lancement-et-configuration-du-lab">II. Lancement et configuration du lab</h1>
-<h3 id="checklist-ip-vms">Checklist IP VMs</h3>
-<ul>
-<li>Client1:</li>
-</ul>
-<pre><code>[root@client ~]# hostname
+
+```
+# II. Lancement et configuration du lab
+
+### Checklist IP VMs
+
+* Client1:
+```
+[root@client ~]# hostname
 client.1
-</code></pre>
-<ul>
-<li>Client2:</li>
-</ul>
-<pre><code>[root@client ~]# hostname
+```
+* Client2:
+```
+[root@client ~]# hostname
 client.2
-</code></pre>
-<ul>
-<li>Serveur1:</li>
-</ul>
-<pre><code>[root@serveur ~]# hostname
+```
+* Serveur1:
+```
+[root@serveur ~]# hostname
 serveur.1
-</code></pre>
-<h3 id="checklist-ip-routeurs">Checklist IP Routeurs</h3>
-<p><strong>Définition des IP Statiques</strong></p>
-<ul>
-<li>R1:</li>
-</ul>
-<pre><code>r1#show ip int br
+```
+
+### Checklist IP Routeurs
+
+**Définition des IP Statiques**
+
+-   R1:
+```
+routeur1#show ip int br
 Interface                  IP-Address      OK? Method Status                Protocol
 Ethernet0/0                10.5.1.254      YES manual up                    up
 Ethernet0/1                10.5.12.1       YES manual up                    up
 Ethernet0/2                unassigned      YES unset  administratively down down
 Ethernet0/3                unassigned      YES unset  administratively down down
-</code></pre><p></p>
-<ul>
-<li>R2:</li>
-</ul>
-<pre><code>r2#show ip int br
+
+```
+-   R2:
+```
+routeur2#show ip int br
 Interface                  IP-Address      OK? Method Status                Protocol
 Ethernet0/0                10.5.2.254      YES manual up                    up
 Ethernet0/1                10.5.12.2       YES manual up                    up
 Ethernet0/2                unassigned      YES unset  administratively down down
 Ethernet0/3                unassigned      YES unset  administratively down down
-</code></pre>
-<h1 id="iii.-dhcp">III. DHCP</h1>
-<h2 id="mise-en-place-du-serveur-dhcp">1. Mise en place du serveur DHCP</h2>
-<ol>
-<li>Renommer la machine</li>
-</ol>
-<pre><code>[root@client ~]# nano /etc/hostname
+```
+
+# III. DHCP
+
+## 1. Mise en place du serveur DHCP
+
+1. Renommer la machine
+
+```
+[root@client ~]# nano /etc/hostname
 hostname dhcp-net2.tp5.b1
-</code></pre><p></p>
-<ol start="2">
-<li>Installer le serveur DHCP</li>
-</ol>
-<ul>
-<li>éteindre la VM dans GNS3</li>
-<li>ouvrir VirtualBox</li>
-<li>ajouter une troisième carte en NAT à la VM</li>
-<li>démarrer la VM dans VirtualBox</li>
-</ul>
-<pre><code>[root@dhcp-net2 ~]# yum install -y dhcp
-</code></pre>
-<ol start="3">
-<li>Configuration du serveur DHCP</li>
-</ol>
-<p>
-</p><p>Dans le fichier  <code>sudo nano /etc/dhcp/dhcpd.conf</code>  de dhcp-net2 :</p>
-<pre><code># dhcpd.conf
+
+```
+2. Installer le serveur DHCP
+-   éteindre la VM dans GNS3
+-   ouvrir VirtualBox
+-   ajouter une troisième carte en NAT à la VM
+-   démarrer la VM dans VirtualBox
+```
+[root@dhcp-net2 ~]# yum install -y dhcp
+```
+
+3. Configuration du serveur DHCP
+
+Dans le fichier  `sudo nano /etc/dhcp/dhcpd.conf`  de dhcp-net2 :
+
+```
+# dhcpd.conf
 # option definitions common to all supported networks
 
 option domain-name "tp5.b1";
@@ -105,14 +107,16 @@ option domain-name "tp5.b1";
 option routers 10.5.2.254;
 option broadcast-address 10.5.2.255;
 }
-</code></pre>
-<ol start="5">
-<li>Démarrer le serveur DHCP</li>
-</ol>
-<pre><code>[root@dhcp-net2 ~]# systemctl start dhcpd
-</code></pre>
-<p>Verification:</p>
-<pre><code>[root@dhcp-net2 ~]# systemctl status dhcpd -l
+```
+5. Démarrer le serveur DHCP
+
+```
+[root@dhcp-net2 ~]# systemctl start dhcpd
+```
+
+Verification:
+```
+[root@dhcp-net2 ~]# systemctl status dhcpd -l
 ● dhcpd.service - DHCPv4 Server Daemon
    Loaded: loaded (/usr/lib/systemd/system/dhcpd.service; enabled; vendor preset: disabled)
    Active: active (running) since mer. 2019-02-20 17:27:20 CET; 2min 48s ago
@@ -122,34 +126,38 @@ option broadcast-address 10.5.2.255;
    Status: "Dispatching packets..."
    CGroup: /system.slice/dhcpd.service
            └─3881 /usr/sbin/dhcpd -f -cf /etc/dhcp/dhcpd.conf -user dhcpd -group dhcpd --no-pid
-</code></pre><p>févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Listening on LPF/eth0/00:50:00:00:05:00/10.5.2.0/24<br>
-févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   LPF/eth0/00:50:00:00:05:00/10.5.2.0/24<br>
-févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   Socket/fallback/fallback-net<br>
-févr. 20 17:27:20 dhcp-net2.tp5.b1 systemd[1]: Started DHCPv4 Server Daemon.<br>
-</p>
-<ol start="6">
-<li>Faire un test</li>
-</ol>
-<p>Sur client1 :</p>
-<ul>
-<li>IP dynamique  <code>sudo nano /etc/sysconfig/network-scripts/ifcfg-enp0s3</code></li>
-</ul>
-<pre><code>NAME=enp0s3
+
+févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Listening on LPF/eth0/00:50:00:00:05:00/10.5.2.0/24
+févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   LPF/eth0/00:50:00:00:05:00/10.5.2.0/24
+févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   Socket/fallback/fallback-net
+févr. 20 17:27:20 dhcp-net2.tp5.b1 systemd[1]: Started DHCPv4 Server Daemon.
+```
+
+6. Faire un test
+
+Sur client1 :
+
+-   IP dynamique  `sudo nano /etc/sysconfig/network-scripts/ifcfg-enp0s3`
+
+```
+NAME=enp0s3
 DEVICE=enp0s3
-</code></pre><p>BOOTPROTO=dhcp<br>
-ONBOOT=yes</p>
-<p></p>
-<ul>
-<li><code>ip a</code>:</li>
-</ul>
-<pre><code>enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt;&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+
+BOOTPROTO=dhcp
+ONBOOT=yes
+
+```
+-   `ip a`:
+```
+enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:35:66:94 brd ff:ff:ff:ff:ff:ff
     inet 10.5.2.50/24 brd 10.5.2.255 scope global noprefixroute dynamic enp0s3
        valid_lft 598sec preferred_lft 598sec
     inet6 fe80::a00:27ff:fe35:6694/64 scope link
        valid_lft forever preferred_lft forever
-</code></pre>
-
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyMTM1NTk4NF19
+eyJoaXN0b3J5IjpbODI5MzA5MTMxLC02OTU3MjgzNDYsMTA3Mj
+U2NTg4MSw0NjA0MTk1NzAsLTYzNTcwNDgyLDg3NDQ0NzQ4XX0=
+
 -->
