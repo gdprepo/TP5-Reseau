@@ -82,7 +82,9 @@ hostname dhcp-net2.tp5.b1
 <ol start="3">
 <li>Configuration du serveur DHCP</li>
 </ol>
-<p>Dans le fichier  <code>sudo nano /etc/dhcp/dhcpd.conf</code>  de dhcp-net2 :</p>
+<p>
+
+Dans le fichier  <code>sudo nano /etc/dhcp/dhcpd.conf</code>  de dhcp-net2 :</p>
 <pre><code># dhcpd.conf
 # option definitions common to all supported networks
 
@@ -145,7 +147,7 @@ ONBOOT=yes
 <ul>
 <li><code>ip a</code>:</li>
 </ul>
-<pre><code>enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+<pre><code>enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt;> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:35:66:94 brd ff:ff:ff:ff:ff:ff
     inet 10.5.2.50/24 brd 10.5.2.255 scope global noprefixroute dynamic enp0s3
        valid_lft 598sec preferred_lft 598sec
@@ -153,3 +155,6 @@ ONBOOT=yes
        valid_lft forever preferred_lft forever
 </code></pre>
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE0OTQzMjAxODldfQ==
+-->
