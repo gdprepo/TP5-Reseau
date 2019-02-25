@@ -157,7 +157,7 @@ enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP gro
        valid_lft forever preferred_lft forever
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI5MzA5MTMxLC02OTU3MjgzNDYsMTA3Mj
-U2NTg4MSw0NjA0MTk1NzAsLTYzNTcwNDgyLDg3NDQ0NzQ4XX0=
-
+eyJoaXN0b3J5IjpbNTM4MjQ1MTU1LDgyOTMwOTEzMSwtNjk1Nz
+I4MzQ2LDEwNzI1NjU4ODEsNDYwNDE5NTcwLC02MzU3MDQ4Miw4
+NzQ0NDc0OF19
 -->
