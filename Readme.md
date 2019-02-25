@@ -3,6 +3,8 @@
 
 ---
 
+<hr>
+<hr>
 <h1 id="tp5---premier-pas-dans-le-monde-cisco">TP5 - Premier pas dans le monde Cisco</h1>
 <h1 id="i.-préparation-du-lab">I. Préparation du lab</h1>
 <h2 id="préparation-vms">Préparation VMs</h2>
@@ -14,8 +16,7 @@
 </code></pre>
 <pre><code>[root@vm3 ~]# ip route
 10.5.2.0/24 dev enp0s3 proto kernel scope link src 10.5.2.11 metric 100
-
-</code></pre>
+</code></pre><p></p>
 <h1 id="ii.-lancement-et-configuration-du-lab">II. Lancement et configuration du lab</h1>
 <h3 id="checklist-ip-vms">Checklist IP VMs</h3>
 <ul>
@@ -47,8 +48,7 @@ Ethernet0/0                10.5.1.254      YES manual up                    up
 Ethernet0/1                10.5.12.1       YES manual up                    up
 Ethernet0/2                unassigned      YES unset  administratively down down
 Ethernet0/3                unassigned      YES unset  administratively down down
-
-</code></pre>
+</code></pre><p></p>
 <ul>
 <li>R2:</li>
 </ul>
@@ -66,8 +66,7 @@ Ethernet0/3                unassigned      YES unset  administratively down down
 </ol>
 <pre><code>[root@client ~]# nano /etc/hostname
 hostname dhcp-net2.tp5.b1
-
-</code></pre>
+</code></pre><p></p>
 <ol start="2">
 <li>Installer le serveur DHCP</li>
 </ol>
@@ -83,8 +82,7 @@ hostname dhcp-net2.tp5.b1
 <li>Configuration du serveur DHCP</li>
 </ol>
 <p>
-
-Dans le fichier  <code>sudo nano /etc/dhcp/dhcpd.conf</code>  de dhcp-net2 :</p>
+</p><p>Dans le fichier  <code>sudo nano /etc/dhcp/dhcpd.conf</code>  de dhcp-net2 :</p>
 <pre><code># dhcpd.conf
 # option definitions common to all supported networks
 
@@ -124,12 +122,11 @@ option broadcast-address 10.5.2.255;
    Status: "Dispatching packets..."
    CGroup: /system.slice/dhcpd.service
            └─3881 /usr/sbin/dhcpd -f -cf /etc/dhcp/dhcpd.conf -user dhcpd -group dhcpd --no-pid
-
-févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Listening on LPF/eth0/00:50:00:00:05:00/10.5.2.0/24
-févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   LPF/eth0/00:50:00:00:05:00/10.5.2.0/24
-févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   Socket/fallback/fallback-net
-févr. 20 17:27:20 dhcp-net2.tp5.b1 systemd[1]: Started DHCPv4 Server Daemon.
-</code></pre>
+</code></pre><p>févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Listening on LPF/eth0/00:50:00:00:05:00/10.5.2.0/24<br>
+févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   LPF/eth0/00:50:00:00:05:00/10.5.2.0/24<br>
+févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   Socket/fallback/fallback-net<br>
+févr. 20 17:27:20 dhcp-net2.tp5.b1 systemd[1]: Started DHCPv4 Server Daemon.<br>
+</p>
 <ol start="6">
 <li>Faire un test</li>
 </ol>
@@ -139,15 +136,13 @@ févr. 20 17:27:20 dhcp-net2.tp5.b1 systemd[1]: Started DHCPv4 Server Daemon.
 </ul>
 <pre><code>NAME=enp0s3
 DEVICE=enp0s3
-
-BOOTPROTO=dhcp
-ONBOOT=yes
-
-</code></pre>
+</code></pre><p>BOOTPROTO=dhcp<br>
+ONBOOT=yes</p>
+<p></p>
 <ul>
 <li><code>ip a</code>:</li>
 </ul>
-<pre><code>enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt;> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+<pre><code>enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt;&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:35:66:94 brd ff:ff:ff:ff:ff:ff
     inet 10.5.2.50/24 brd 10.5.2.255 scope global noprefixroute dynamic enp0s3
        valid_lft 598sec preferred_lft 598sec
@@ -155,6 +150,3 @@ ONBOOT=yes
        valid_lft forever preferred_lft forever
 </code></pre>
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTQzMjAxODldfQ==
--->
