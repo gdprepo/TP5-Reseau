@@ -42,7 +42,7 @@ serveur.1
 
 -   R1:
 ```
-routeur1#show ip int br
+r1#show ip int br
 Interface                  IP-Address      OK? Method Status                Protocol
 Ethernet0/0                10.5.1.254      YES manual up                    up
 Ethernet0/1                10.5.12.1       YES manual up                    up
@@ -52,7 +52,7 @@ Ethernet0/3                unassigned      YES unset  administratively down down
 ```
 -   R2:
 ```
-routeur2#show ip int br
+r2#show ip int br
 Interface                  IP-Address      OK? Method Status                Protocol
 Ethernet0/0                10.5.2.254      YES manual up                    up
 Ethernet0/1                10.5.12.2       YES manual up                    up
