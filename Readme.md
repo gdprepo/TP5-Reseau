@@ -38,7 +38,27 @@ serveur.1
 
 ### Checklist IP Routeurs
 
+**Définition des IP Statiques**
 
+-   R1:
+```
+routeur1#show ip int br
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                10.5.1.254      YES manual up                    up
+Ethernet0/1                10.5.12.1       YES manual up                    up
+Ethernet0/2                unassigned      YES unset  administratively down down
+Ethernet0/3                unassigned      YES unset  administratively down down
+
+```
+-   R2:
+```
+routeur2#show ip int br
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                10.5.2.254      YES manual up                    up
+Ethernet0/1                10.5.12.2       YES manual up                    up
+Ethernet0/2                unassigned      YES unset  administratively down down
+Ethernet0/3                unassigned      YES unset  administratively down down
+```
 
 # III. DHCP
 
@@ -46,6 +66,6 @@ serveur.1
 
 ### 2. Explorer un peu DHCP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODAyNjc5MzczLDEwNzI1NjU4ODEsNDYwND
-E5NTcwLC02MzU3MDQ4Miw4NzQ0NDc0OF19
+eyJoaXN0b3J5IjpbLTY5NTcyODM0NiwxMDcyNTY1ODgxLDQ2MD
+QxOTU3MCwtNjM1NzA0ODIsODc0NDQ3NDhdfQ==
 -->
