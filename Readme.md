@@ -36,7 +36,7 @@ client.2
 serveur.1
 ```
 
-### Checklist routes
+### Checklist IP Routeurs
 
 
 
@@ -46,6 +46,6 @@ serveur.1
 
 ### 2. Explorer un peu DHCP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA3MjU2NTg4MSw0NjA0MTk1NzAsLTYzNT
-cwNDgyLDg3NDQ0NzQ4XX0=
+eyJoaXN0b3J5IjpbODAyNjc5MzczLDEwNzI1NjU4ODEsNDYwND
+E5NTcwLC02MzU3MDQ4Miw4NzQ0NDc0OF19
 -->
