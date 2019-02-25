@@ -131,7 +131,6 @@ févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Listening on LPF/eth0/00:50:00:
 févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   LPF/eth0/00:50:00:00:05:00/10.5.2.0/24
 févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   Socket/fallback/fallback-net
 févr. 20 17:27:20 dhcp-net2.tp5.b1 systemd[1]: Started DHCPv4 Server Daemon.
-
 ```
 
 6. Faire un test
@@ -148,9 +147,7 @@ BOOTPROTO=dhcp
 ONBOOT=yes
 
 ```
-
 -   `ip a`:
-
 ```
 enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 08:00:27:35:66:94 brd ff:ff:ff:ff:ff:ff
@@ -160,7 +157,7 @@ enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP gro
        valid_lft forever preferred_lft forever
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzgxMTA0OTUzLC02OTU3MjgzNDYsMTA3Mj
+eyJoaXN0b3J5IjpbODI5MzA5MTMxLC02OTU3MjgzNDYsMTA3Mj
 U2NTg4MSw0NjA0MTk1NzAsLTYzNTcwNDgyLDg3NDQ0NzQ4XX0=
 
 -->
