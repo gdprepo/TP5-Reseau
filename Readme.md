@@ -46,6 +46,6 @@ serveur.1
 
 ### 2. Explorer un peu DHCP
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDYwNDE5NTcwLC02MzU3MDQ4Miw4NzQ0ND
-c0OF19
+eyJoaXN0b3J5IjpbMTA3MjU2NTg4MSw0NjA0MTk1NzAsLTYzNT
+cwNDgyLDg3NDQ0NzQ4XX0=
 -->
