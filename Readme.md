@@ -20,7 +20,6 @@
 
 ### Checklist IP VMs
 
-- Nom de domaine
 * Client1:
 ```
 [root@client ~]# hostname
@@ -36,6 +35,7 @@ client.2
 [root@serveur ~]# hostname
 serveur.1
 ```
+
 ### Checklist routes
 
 
