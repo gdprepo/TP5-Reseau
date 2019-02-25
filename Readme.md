@@ -62,7 +62,6 @@ Ethernet0/3                unassigned      YES unset  administratively down down
 
 # III. DHCP
 
-
 ## 1. Mise en place du serveur DHCP
 
 1. Renommer la machine
@@ -72,20 +71,16 @@ Ethernet0/3                unassigned      YES unset  administratively down down
 hostname dhcp-net2.tp5.b1
 
 ```
-
 2. Installer le serveur DHCP
-
 -   éteindre la VM dans GNS3
 -   ouvrir VirtualBox
 -   ajouter une troisième carte en NAT à la VM
 -   démarrer la VM dans VirtualBox
-
 ```
 [root@dhcp-net2 ~]# yum install -y dhcp
-
 ```
 
-4. Configuration du serveur DHCP
+3. Configuration du serveur DHCP
 
 Dans le fichier  `sudo nano /etc/dhcp/dhcpd.conf`  de dhcp-net2 :
 
@@ -114,9 +109,58 @@ option broadcast-address 10.5.2.255;
 }
 ```
 5. Démarrer le serveur DHCP
-6. 
+
+```
+[root@dhcp-net2 ~]# systemctl start dhcpd
+```
+
+Verification:
+```
+[root@dhcp-net2 ~]# systemctl status dhcpd -l
+● dhcpd.service - DHCPv4 Server Daemon
+   Loaded: loaded (/usr/lib/systemd/system/dhcpd.service; enabled; vendor preset: disabled)
+   Active: active (running) since mer. 2019-02-20 17:27:20 CET; 2min 48s ago
+     Docs: man:dhcpd(8)
+           man:dhcpd.conf(5)
+ Main PID: 3881 (dhcpd)
+   Status: "Dispatching packets..."
+   CGroup: /system.slice/dhcpd.service
+           └─3881 /usr/sbin/dhcpd -f -cf /etc/dhcp/dhcpd.conf -user dhcpd -group dhcpd --no-pid
+
+févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Listening on LPF/eth0/00:50:00:00:05:00/10.5.2.0/24
+févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   LPF/eth0/00:50:00:00:05:00/10.5.2.0/24
+févr. 20 17:27:20 dhcp-net2.tp5.b1 dhcpd[3881]: Sending on   Socket/fallback/fallback-net
+févr. 20 17:27:20 dhcp-net2.tp5.b1 systemd[1]: Started DHCPv4 Server Daemon.
+
+```
+
+6. Faire un test
+
+Sur client1 :
+
+-   IP dynamique  `sudo nano /etc/sysconfig/network-scripts/ifcfg-enp0s3`
+
+```
+NAME=enp0s3
+DEVICE=enp0s3
+
+BOOTPROTO=dhcp
+ONBOOT=yes
+
+```
+
+-   `ip a`:
+
+```
+enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:35:66:94 brd ff:ff:ff:ff:ff:ff
+    inet 10.5.2.50/24 brd 10.5.2.255 scope global noprefixroute dynamic enp0s3
+       valid_lft 598sec preferred_lft 598sec
+    inet6 fe80::a00:27ff:fe35:6694/64 scope link
+       valid_lft forever preferred_lft forever
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3NzU5ODY3LC02OTU3MjgzNDYsMTA3Mj
+eyJoaXN0b3J5IjpbMzgxMTA0OTUzLC02OTU3MjgzNDYsMTA3Mj
 U2NTg4MSw0NjA0MTk1NzAsLTYzNTcwNDgyLDg3NDQ0NzQ4XX0=
 
 -->
